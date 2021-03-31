@@ -1,0 +1,40 @@
+import { showNotification, reportError } from '../../../utils/index.js';
+import { getHeadersWithAccessToken, logout } from '../../../auth/index.js';
+import { goTo } from '../../../router/index.js';
+import { API_ENDPOINT, STATUS_CODE, SECTIONS_MESSAGES, AUTH_MESSAGES, PATHNAMES } from '../../../constants/index.js';
+
+export default async function requestReadSection() {
+  try {
+    const response = await fetchReadSection();
+
+    if (response.status === STATUS_CODE.AUTH_FAILED) {
+      showNotification(AUTH_MESSAGES.LOGIN_HAS_BEEN_EXPIRED);
+      logout();
+      goTo(PATHNAMES.LOGIN);
+      return [];
+    }
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(`[status code: ${response.status}] ${errorMessage}`);
+    }
+
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    reportError({
+      messageToUser: SECTIONS_MESSAGES.REQUEST_HAS_BEEN_FAILED,
+      messageToLog: error.message,
+    });
+    return [];
+  }
+}
+
+async function fetchReadSection() {
+  const response = await fetch(API_ENDPOINT.SECTIONS, {
+    method: 'GET',
+    headers: getHeadersWithAccessToken(),
+  });
+
+  return response;
+}
