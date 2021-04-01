@@ -6,7 +6,7 @@ import { dispatchFormData } from '../../../utils/index.js';
 import {
   STATION_OPTION_TEMPLATE,
   LINE_OPTION_TEMPLATE,
-  STATION_OF_LINE_TEMPLATE,
+  SECTION_OF_LINE_TEMPLATE,
   SECTIONS_TEMPLATE,
 } from './template.js';
 
@@ -30,12 +30,19 @@ $addForm.addEventListener('formdata', requestCreateSection);
 let selectedLineId;
 
 export async function renderSections($main) {
-  const { totalLineList, sectionListOfLine, stationOptionList, lineId } = await getSubwayData(selectedLineId);
+  // const { totalLineList, sectionListOfLine, stationOptionList, lineId } = await getSubwayData(selectedLineId);
 
-  selectedLineId = lineId;
-  renderLineSelect(totalLineList);
-  renderSectionListOfLine(sectionListOfLine, lineId);
-  renderAddForm(stationOptionList, lineId);
+  // selectedLineId = lineId;
+  // renderLineSelect(totalLineList);
+  // renderSectionListOfLine(sectionListOfLine, lineId);
+  // renderAddForm(stationOptionList, lineId);
+
+  $list.innerHTML = [
+    { id: 1, name: '사당', distance: 2, duration: 3 },
+    { id: 2, name: '삼성', distance: 10, duration: 20 },
+  ]
+    .map((station) => SECTION_OF_LINE_TEMPLATE(station))
+    .join('');
 
   $main.replaceChildren($wrapper);
 }
@@ -53,7 +60,7 @@ function renderLineSelect(totalLineList) {
 }
 
 function renderSectionListOfLine(sectionListOfLine, lineId) {
-  $list.innerHTML = sectionListOfLine.map((station) => STATION_OF_LINE_TEMPLATE(station, lineId)).join('');
+  $list.innerHTML = sectionListOfLine.map((station) => SECTION_OF_LINE_TEMPLATE(station, lineId)).join('');
 }
 
 function renderAddForm(stationOptionList, lineId) {

@@ -2,3 +2,96 @@
   position: absolute;
   left: 40vw;
 }
+
+.station {
+  width: 40%;
+  /* background-color: white; */
+}
+
+.distance,
+.duration {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  margin-right: 5px;
+  background-color: #f6f9fc;
+}
+
+.distance,
+.duration,
+.remove-button {
+  margin-bottom: -68px;
+}
+
+.section-list-item .add-section {
+  line-height: 1.5rem;
+}
+
+.add-section {
+  display: inline-block;
+  width: 10%;
+  height: auto;
+}
+
+.add-form.edit-mode ~ .section-list > add-section {
+  height: 200px;
+}
+
+.add-form.edit-mode ~ .section-list > add-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+}
+
+.section-list {
+  height: 100%;
+}
+
+.section-list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 10px;
+  height: 100%;
+  background-color: #888;
+}
+
+#line-select,
+#station-select {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: inherit;
+  height: auto;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%), radial-gradient(#fff 0%, transparent 0%);
+  background-position: calc(100% - 30px) calc(1em + 4px), calc(100% - 25px) calc(1em + 4px), calc(100% - 0.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
+  background-repeat: no-repeat;
+}
+
+#line-select {
+  width: 100%;
+}
+
+#station-select {
+  width: 20%;
+}
+
+#line-select:focus,
+#station-select:focus {
+  border: 2px solid rgb(78, 207, 224);
+}

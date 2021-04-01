@@ -8,16 +8,16 @@ export const STATION_OPTION_TEMPLATE = (stationList) => {
   return `${headOption}${bodyOptions}`;
 };
 
-export const STATION_OF_LINE_TEMPLATE = ({ id: stationId, name: stationName, distance, duration }, lineId) => `
-<li class="station-list-item d-flex items-center py-2">
-  <span class="w-100 pl-2">${stationName}</span>
+export const SECTION_OF_LINE_TEMPLATE = ({ id: stationId, name: stationName, distance, duration }, lineId) => `
+<li class="section-list-item d-flex items-center py-2">
+  <span class="station pl-2">${stationName}</span>
   <span class="distance">${distance} km</span>
   <span class="duration">${duration} 분</span>
   <i class="remove-button fas fa-trash-alt" data-line-id=${lineId} data-station-id=${stationId}></i>
 </li>
-<li class="station-list-item d-flex items-center py-2">
-  <i class="plus-button fas fa-plus-circle" data-station-id=${stationId}></i>
-</li>
+<div class="add-section d-flex items-center">
+  <i class="plus-button ml-2 fas fa-plus-circle" data-station-id=${stationId}></i>
+</div>
 `;
 
 export const SECTIONS_TEMPLATE = `
@@ -28,7 +28,7 @@ export const SECTIONS_TEMPLATE = `
     <label for="line-select" class="input-label v-hidden">노선</label>
     <select id="line-select"></select>
   </div>
-<ul class="mt-3 pl-0">
+<ul class="section-list d-flex flex-col mt-6 pl-0">
 </ul>
 <form id="add-form" class="section-add-form v-hidden" data-line-id="" data-up-station-id="" data-down-station-id="">
   <label for="station-select" class="input-label v-hidden">역 선택</label>
