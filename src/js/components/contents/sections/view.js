@@ -30,19 +30,12 @@ $addForm.addEventListener('formdata', requestCreateSection);
 let selectedLineId;
 
 export async function renderSections($main) {
-  // const { totalLineList, sectionListOfLine, stationOptionList, lineId } = await getSubwayData(selectedLineId);
+  const { totalLineList, sectionListOfLine, stationOptionList, lineId } = await getSubwayData(selectedLineId);
 
-  // selectedLineId = lineId;
-  // renderLineSelect(totalLineList);
-  // renderSectionListOfLine(sectionListOfLine, lineId);
-  // renderAddForm(stationOptionList, lineId);
-
-  $list.innerHTML = [
-    { id: 1, name: '사당', distance: 2, duration: 3 },
-    { id: 2, name: '삼성', distance: 10, duration: 20 },
-  ]
-    .map((station) => SECTION_OF_LINE_TEMPLATE(station))
-    .join('');
+  selectedLineId = lineId;
+  renderLineSelect(totalLineList);
+  renderSectionListOfLine(sectionListOfLine, lineId);
+  renderAddForm(stationOptionList, lineId);
 
   $main.replaceChildren($wrapper);
 }
