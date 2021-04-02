@@ -1,51 +1,6 @@
-.create-line-btn {
-  font-size: 1rem;
-  width: 120px;
-  line-height: inherit;
-  cursor: pointer;
-  height: 42px;
-  padding: 0.65rem 1.25rem;
-  border: none;
-  outline: none;
-  border-radius: 2rem;
-}
-
-.subway-line-color-dot {
-  display: inline-block;
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 100%;
-}
-
-.color-option {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  cursor: pointer;
-  border: none;
-  border-radius: 3px;
-}
-
-.create-section-btn {
-  font-size: 1rem;
-  width: 120px;
-  line-height: inherit;
-  cursor: pointer;
-  height: 42px;
-  padding: 0.65rem 1.25rem;
-  border: none;
-  outline: none;
-  border-radius: 2rem;
-}
-
-.modal-inner {
-  width: 600px;
-}
-
 .btn {
   height: 36px;
-  min-width: 64px;
+  min-width: 110px;
   padding: 0 16px;
   border-radius: 4px;
   outline: 0;
@@ -81,6 +36,19 @@
 
 .d-inline-block {
   display: inline-block;
+}
+
+.d-none {
+  display: none;
+}
+
+/* Layout - Visibility */
+.v-visible {
+  visibility: visible;
+}
+
+.v-hidden {
+  visibility: hidden;
 }
 
 /* Layout - Top / Right / Bottom / Left */
@@ -4066,6 +4034,7 @@ rounded {
 #snackbar-container {
   position: fixed;
   bottom: 0px;
+  left: 20vw;
   z-index: 2;
 }
 
@@ -4111,6 +4080,15 @@ rounded {
   100% {
     opacity: 0;
   }
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 
@@ -4195,6 +4173,31 @@ svg {
   text-align: center;
 }
 
+i {
+  cursor: pointer;
+  padding: 0 0.3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+i:hover {
+  color: rgb(5, 172, 193);
+  animation: wave-animation 0.4s infinite;
+}
+
+@keyframes wave-animation {
+  0%,
+  100% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(15deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(-10deg);
+  }
+}
+
 form .input-control {
   position: relative;
   display: flex;
@@ -4213,7 +4216,7 @@ form .input-field {
   border: 2.5px solid rgba(0, 0, 0, 0);
   outline: none;
   border-radius: 2rem;
-  background: #f1f5f9;
+  background-color: #f1f5f9;
 }
 
 form .input-field:focus {
@@ -4222,20 +4225,6 @@ form .input-field:focus {
 
 form .input-field:focus:invalid {
   border-color: rgb(53, 53, 53);
-}
-
-form .input-field + span::before {
-  position: absolute;
-  right: 30px;
-  transform: translateY(-50%);
-}
-
-form .input-field:focus:invalid + span::before {
-  content: '🙅❗️';
-}
-
-form .input-field:focus:valid + span::before {
-  content: '👍';
 }
 
 form .input-submit {
@@ -4275,6 +4264,472 @@ form select {
   background-repeat: no-repeat;
 }
 
+.auth-input-control {
+  position: relative;
+  display: grid;
+  grid-template-columns: 68px auto;
+  margin-bottom: 1rem;
+}
+
+.auth-input-label {
+  align-self: center;
+}
+
+/* 사용자 입력창 */
+.auth-input-field {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: inherit;
+  height: auto;
+  padding: 0.75rem 1.5rem;
+  border: 2.5px solid rgba(0, 0, 0, 0);
+  outline: none;
+  border-radius: 2rem;
+  background: #f1f5f9;
+}
+
+.auth-input-field:focus {
+  border-color: rgb(78, 207, 224);
+}
+
+.auth-input-field:focus:invalid {
+  border-color: #666;
+}
+
+/* 유효성 검사 메세지 */
+.validation-message {
+  height: 21px;
+  font-size: 0.9rem;
+  color: gray;
+  margin-top: 5px;
+  padding-left: 20px;
+  align-self: center;
+}
+
+.auth-input-field:invalid ~ .validation-message {
+  color: #c74b2a;
+}
+
+.auth-input-field:valid ~ .validation-message {
+  color: rgb(0, 130, 148);
+}
+
+/* 이모지 */
+.auth-input-field + span::before {
+  position: absolute;
+  top: 40px;
+  right: 30px;
+  transform: translateY(-100%);
+}
+
+.auth-input-field:focus:invalid + span::before {
+  content: '🙅❗️';
+}
+
+.auth-input-field:focus:valid + span::before {
+  content: '👍';
+}
+
+/* 확인버튼 */
+.auth-submit-button {
+  font-size: 1rem;
+  cursor: pointer;
+  width: 90px;
+  height: 2.8rem;
+  padding: 0.65rem 1.25rem;
+  border: 3px solid transparent;
+  outline: none;
+  border-radius: 2rem;
+}
+
+.auth-submit-button:focus {
+  border-color: black;
+}
+
+.auth-submit-button:disabled {
+  background-color: rgba(78, 207, 224, 0.7);
+  cursor: default;
+}
+
+/* 역 이름 제출 입력창 */
+
+.station-add-input-field {
+  color: #222;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: inherit;
+  width: 100%;
+  height: auto;
+  padding: 0.5rem 2rem;
+  border: 2.5px solid rgba(0, 0, 0, 0);
+  outline: none;
+  border-radius: 0.5rem;
+  background: #f6f9fc;
+}
+
+.station-edit-input-field {
+  color: #222;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 100%;
+  height: 2.5rem;
+  margin: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #aaa;
+  border-radius: 0.5rem;
+  outline: none;
+  background-color: transparent;
+}
+
+.station-edit-input-field:disabled {
+  border-color: rgba(78, 207, 224, 0);
+  outline: none;
+}
+
+.station-add-input-field,
+.edit-mode .station-edit-input-field {
+  background-color: #f0f4f9;
+}
+
+.station-add-input-field:focus,
+.station-edit-input-field:focus {
+  border-color: rgb(78, 207, 224);
+}
+
+.station-add-input-field:focus:invalid,
+.station-edit-input-field:focus:invalid {
+  border-color: #666;
+}
+
+/* 역 이름 추가버튼 */
+.station-add-button {
+  font-size: 1rem;
+  cursor: pointer;
+  min-width: 80px;
+  height: auto;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 0.5rem;
+}
+
+.station-add-button:focus {
+  border: 2px solid #333;
+}
+
+.station-add-button:disabled {
+  background-color: rgba(78, 207, 224, 0.7);
+  cursor: default;
+}
+
+.station-list-item {
+  list-style: none;
+}
+
+.edit-buttons {
+  min-width: 70px;
+  min-height: 40px;
+}
+
+.edit-form:hover .edit-button,
+.edit-form:hover .remove-button {
+  display: inline-block;
+}
+
+.edit-mode .edit-button,
+.edit-mode:hover .edit-button,
+.edit-mode .remove-button,
+.edit-mode:hover .remove-button {
+  display: none;
+}
+
+.edit-mode .check-button,
+.edit-mode .undo-button {
+  display: inline-block;
+}
+
+.line-input-field {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: inherit;
+  height: auto;
+  padding: 0.5rem 1.5rem;
+  border: 2.5px solid rgba(0, 0, 0, 0);
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+}
+
+.line-input-field:focus {
+  border-color: rgb(78, 207, 224);
+}
+
+.line-input-field:focus:invalid {
+  border-color: #666;
+}
+
+.line-input-field + span::before {
+  position: absolute;
+  top: 12px;
+  right: 32px;
+  font-family: monospace;
+}
+
+/* 노선 정보 추가 Form */
+.line-add-form {
+  display: grid;
+  gap: 15px;
+}
+
+#add-line-name {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+#add-up-station {
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+
+#add-down-station {
+  grid-column: 4/5;
+  grid-row: 1/2;
+}
+
+#add-distance {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#add-duration {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#add-distance + span::before {
+  content: 'km';
+}
+
+#add-duration + span::before {
+  content: '분';
+}
+
+.line-color-input {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+}
+
+.line-color-input.edit-mode {
+  background-color: rgba(78, 207, 224, 0);
+}
+
+#line-color-container {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+}
+
+#add-line-color-label {
+  font-family: 'monospace';
+  font-size: smaller;
+}
+
+/* 노선 정보 수정 Form */
+.edit-form.edit-mode .edit-line-name {
+  background-color: #f1f5f9;
+}
+
+.edit-form.edit-mode .line-color-input {
+  background-color: #f1f5f9;
+}
+
+.edit-form .edit-line-name {
+  color: rgb(53, 53, 53);
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 400;
+  width: auto;
+  height: 2.5rem;
+  margin: 0.5rem;
+  border: 2px solid #aaa;
+  border-radius: 1rem;
+  outline: none;
+  background-color: transparent;
+}
+
+.edit-form .edit-line-name:disabled {
+  border-color: rgba(78, 207, 224, 0);
+  outline: none;
+}
+
+/* 노선 이름 추가버튼 */
+.line-add-button {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+  font-size: 1rem;
+  cursor: pointer;
+  min-width: 80px;
+  height: auto;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 0.5rem;
+}
+
+.line-add-button:focus {
+  border: 2px solid #333;
+}
+
+.line-add-button:disabled {
+  background-color: rgba(78, 207, 224, 0.7);
+  cursor: default;
+}
+
+/* 노선 선택 Select, 구간 추가시 역 선택 Select */
+#line-select,
+#station-select {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: inherit;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: #f1f5f9;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%), radial-gradient(#fff 0%, transparent 0%);
+  background-position: calc(100% - 30px) calc(1em + 4px), calc(100% - 25px) calc(1em + 4px), calc(100% - 0.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
+  background-repeat: no-repeat;
+}
+
+#line-select {
+  width: 100%;
+}
+
+#station-select {
+  width: 80%;
+  justify-self: flex-start;
+}
+
+#line-select:focus,
+#station-select:focus {
+  border: 2px solid rgb(78, 207, 224);
+}
+
+#line-select:focus:invalid,
+#station-select:focus:invalid {
+  border-color: #666;
+}
+
+/* 구간 목록 표시 List */
+.section-list {
+  height: 100%;
+}
+
+.section-list-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 10px;
+  line-height: 2rem;
+}
+
+.section-list-item .station {
+  text-align: center;
+  width: 80%;
+  line-height: 2rem;
+  margin: 0.75rem 0;
+  border-top: 1px dashed #ddd;
+  border-bottom: 1px dashed #ddd;
+  justify-self: flex-start;
+}
+
+.section-list-item .distance,
+.section-list-item .duration {
+  font-family: monospace;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  /* background-color: #f6f8f9; */
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+}
+
+.section-list-item .remove-button {
+  justify-self: flex-end;
+}
+
+.section-list-item:nth-last-child(2) .distance,
+.section-list-item:nth-last-child(2) .duration {
+  visibility: hidden;
+}
+
+.plus-button-wrapper {
+  margin-left: 66px;
+}
+
+.plus-button-wrapper:last-child {
+  display: none;
+}
+
+.section-info-label {
+  font-family: monospace;
+  letter-spacing: -0.04rem;
+  color: #333;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: -40px;
+  margin-left: 41%;
+}
+
+/* 구간 추가 Form */
+.section-add-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 10px;
+  transform: translateY(-25%);
+  position: absolute;
+  width: 540px;
+}
+
+.section-add-form .distance,
+.section-add-form .duration {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: inherit;
+  width: 90%;
+  height: auto;
+  padding: 0.1rem 0.2rem;
+  border: 2.5px solid rgba(0, 0, 0, 0);
+  outline: none;
+  border-radius: 0.5rem;
+  background: #f1f5f9;
+}
+
+.section-add-form .distance:focus,
+.section-add-form .duration:focus {
+  border-color: rgb(78, 207, 224);
+}
+
+.section-add-form .distance:focus:invalid,
+.section-add-form .duration:focus:invalid {
+  border-color: #666;
+}
+
 
 
 html,
@@ -4298,6 +4753,7 @@ h1 {
 
 a {
   text-decoration: none;
+  color: rgb(5, 95, 100);
 }
 
 a:visited {
